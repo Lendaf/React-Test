@@ -1,0 +1,82 @@
+{
+    "firstLayer": {
+        "Title": "Chaise",
+        "unit": "kgCO2",
+        "data": [
+            {
+                "name": "Poste 1",
+                "value": 100
+            },
+            {
+                "name": "Poste 2",
+                "value": 256
+            },
+            {
+                "name": "Poste 3",
+                "value": 32
+            },
+            {
+                "name": "Poste 4",
+                "value": 56
+            },
+            {
+                "name": "Poste 5",
+                "value": 89
+            }
+        ],
+        "color": ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"]
+    },
+    "secondLayer": {
+        "unit": "kgCO2",
+        "Poste 1": {
+            "data": [
+                {
+                    "name": "Partie A",
+                    "value": 6
+                },
+                {
+                    "name": "Partie B",
+                    "value": 34
+                },
+                {
+                    "name": "Partie C",
+                    "value": 30
+                },
+                {
+                    "name": "Partie D",
+                    "value": 5
+                },
+                {
+                    "name": "Partie E",
+                    "value": 25
+                }
+            ],
+            "color": ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"]
+        }
+    },
+    "thirdLayer": {
+        "unit": "kgCO2e",
+        "Partie A": {
+            "data": [
+                {
+                    "name": "Sous-Partie I",
+                    "value": 1
+                },
+                {
+                    "name": "Sous-Partie II",
+                    "value": 2
+                },
+                {
+                    "name": "Sous-Partie III",
+                    "value": 1
+                },
+                {
+                    "name": "Sous-Partie IV",
+                    "value": 3
+                }
+            ],
+            "color": ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"]
+
+        }
+    }
+}
