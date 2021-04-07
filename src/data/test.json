@@ -1,25 +1,31 @@
 {
+    "background_color": "#282c34",
     "firstLayer": {
         "Title": "Chaise",
         "unit": "kgCO2",
         "data": [
             {
+                "id": 0,
                 "name": "Poste 1",
                 "value": 100
             },
             {
+                "id": 1,
                 "name": "Poste 2",
                 "value": 256
             },
             {
+                "id": 2,
                 "name": "Poste 3",
                 "value": 32
             },
             {
+                "id": 3,
                 "name": "Poste 4",
                 "value": 56
             },
             {
+                "id": 4,
                 "name": "Poste 5",
                 "value": 89
             }
@@ -31,22 +37,27 @@
         "Poste 1": {
             "data": [
                 {
+                    "id": 0,
                     "name": "Partie A",
                     "value": 6
                 },
                 {
+                    "id": 1,
                     "name": "Partie B",
                     "value": 34
                 },
                 {
+                    "id": 2,
                     "name": "Partie C",
                     "value": 30
                 },
                 {
+                    "id": 3,
                     "name": "Partie D",
                     "value": 5
                 },
                 {
+                    "id": 4,
                     "name": "Partie E",
                     "value": 25
                 }
@@ -59,18 +70,22 @@
         "Partie A": {
             "data": [
                 {
+                    "id": 0,
                     "name": "Sous-Partie I",
                     "value": 1
                 },
                 {
+                    "id": 1,
                     "name": "Sous-Partie II",
                     "value": 2
                 },
                 {
+                    "id": 2,
                     "name": "Sous-Partie III",
                     "value": 1
                 },
                 {
+                    "id": 3,
                     "name": "Sous-Partie IV",
                     "value": 3
                 }
