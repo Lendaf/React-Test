@@ -7,7 +7,6 @@ const Camembert = () => {
 	const [Data01, setData01] = useState(data.firstLayer.data)
 	const [Data02, setData02] = useState([])
 	const [Data03, setData03] = useState([])
-	const [Label, setLabel] = useState([true, false, false])
 	const [selected, setSelected] = useState([{}, {}, {}])
 
 	function remove(setOldData, name, oldData) {
@@ -23,41 +22,57 @@ const Camembert = () => {
 		remove(setOldData, d.name, oldData)
 	}
 
+	function getCX(d) {
+		const RADIAN = Math.PI / 180;
+		const cos = Math.cos(-RADIAN * d.midAngle);
+		const sx = d.cx + (d.outerRadius - 40) * cos;
+		return sx
+	};
+
+	function getCY(d) {
+		const RADIAN = Math.PI / 180;
+		const sin = Math.sin(-RADIAN * d.midAngle);
+		const sy = d.cy + (d.outerRadius - 40) * sin;
+		return sy
+	};
+
 	return (
-		<PieChart width={450} height={450}>
+		<PieChart width={800} height={600}>
 			<Pie
 				data={Data01}
 				startAngle={selected[1].endAngle ? selected[1].endAngle : 0}
 				endAngle={selected[1].startAngle ? 360 + selected[1].startAngle : 360}
-				outerRadius={100}
+				outerRadius={150}
 				label
 				onClick={(d) => addNewLayer(setData02, [{}, d, selected[2]], data.secondLayer[d.name].data, setData01, Data01, d)}
-				onMouseOver={() => console.log(Object.entries(selected[1]).length === 0)}
+				onMouseOver={() => console.log(selected)}
 			>
 				{Data01.map((entry, index) => (
-					Object.entries(selected[1]).length === 0 ? <Cell key={`cell-${index}`} fill={data.firstLayer.color[index]} /> :
-					<Cell key={`cell-${index}`} strokeWidth={0} fill={data.firstLayer.color[index + 1]} />
+					<Cell key={`cell-${index}`} fill={data.firstLayer.color[index + (index >= selected[1].id ? 1 : 0)]} />
         		))}
 			</Pie>
 			<Pie
 				data={Data02}
-				startAngle={selected[1].startAngle}
-				endAngle={selected[1].endAngle}
-				outerRadius={130}
+				startAngle={selected[2].endAngle ? selected[2].endAngle : selected[1].startAngle}
+				endAngle={selected[2].startAngle ? selected[1].endAngle : selected[1].endAngle}
+				cx={getCX(selected[1])}
+				cy={getCY(selected[1])}
 				label
+				outerRadius={150}
 				onClick={(d) => addNewLayer(setData03, [{}, selected[1], d], data.thirdLayer[d.name].data, setData02, Data02, d)}
 			>
 				{Data02.map((entry, index) => (
-					Object.entries(selected[2]).length === 0 ? <Cell key={`cell-${index}`} fill={data.secondLayer[selected[1].name].color[index]} /> :
-					<Cell key={`cell-${index}`} strokeWidth={0} fill={data.secondLayer[selected[1].name].color[index + 1]} />
+					<Cell key={`cell-${index}`} fill={data.secondLayer[selected[1].name].color[index + (index >= selected[2].id ? 1 : 0)]} />
         		))}
 			</Pie>
 			<Pie
 				data={Data03}
 				startAngle={selected[2].startAngle}
 				endAngle={selected[2].endAngle}
-				outerRadius={160}
+				cx={getCX(selected[2])}
+				cy={getCY(selected[2])}
 				label
+				outerRadius={150}
 			>
 				{Data03.map((entry, index) => (
           			<Cell key={`cell-${index}`} fill={data.thirdLayer[selected[2].name].color[index]} />
