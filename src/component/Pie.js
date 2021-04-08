@@ -25,14 +25,14 @@ const Camembert = () => {
 	function getCX(d) {
 		const RADIAN = Math.PI / 180;
 		const cos = Math.cos(-RADIAN * d.midAngle);
-		const sx = d.cx + (d.outerRadius - 40) * cos;
+		const sx = d.cx + (d.outerRadius - 100) * cos;
 		return sx
 	};
 
 	function getCY(d) {
 		const RADIAN = Math.PI / 180;
 		const sin = Math.sin(-RADIAN * d.midAngle);
-		const sy = d.cy + (d.outerRadius - 40) * sin;
+		const sy = d.cy + (d.outerRadius - 100) * sin;
 		return sy
 	};
 
