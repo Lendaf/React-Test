@@ -1,6 +1,6 @@
 /* Pie.js */
 import React, { useState } from 'react'
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 import data from "../data/test.json"
 
 const Camembert = () => {
@@ -37,15 +37,14 @@ const Camembert = () => {
 	};
 
 	return (
-		<PieChart width={800} height={600}>
+		<PieChart width={1200} height={884}>
 			<Pie
 				data={Data01}
 				startAngle={selected[1].endAngle ? selected[1].endAngle : 0}
 				endAngle={selected[1].startAngle ? 360 + selected[1].startAngle : 360}
 				outerRadius={150}
-				label
+				label={(d) => (d.name + ', ' + d.value + ' ' + data.firstLayer.unit)}
 				onClick={(d) => addNewLayer(setData02, [{}, d, selected[2]], data.secondLayer[d.name].data, setData01, Data01, d)}
-				onMouseOver={() => console.log(selected)}
 			>
 				{Data01.map((entry, index) => (
 					<Cell key={`cell-${index}`} fill={data.firstLayer.color[index + (index >= selected[1].id ? 1 : 0)]} />
@@ -57,7 +56,7 @@ const Camembert = () => {
 				endAngle={selected[2].startAngle ? selected[1].endAngle : selected[1].endAngle}
 				cx={getCX(selected[1])}
 				cy={getCY(selected[1])}
-				label
+				label={(d) => (d.name + ', ' + d.value + ' ' + data.secondLayer.unit)}
 				outerRadius={150}
 				onClick={(d) => addNewLayer(setData03, [{}, selected[1], d], data.thirdLayer[d.name].data, setData02, Data02, d)}
 			>
@@ -71,7 +70,7 @@ const Camembert = () => {
 				endAngle={selected[2].endAngle}
 				cx={getCX(selected[2])}
 				cy={getCY(selected[2])}
-				label
+				label={(d) => (d.name + ', ' + d.value + ' ' + data.thirdLayer.unit)}
 				outerRadius={150}
 			>
 				{Data03.map((entry, index) => (
